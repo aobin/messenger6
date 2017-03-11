@@ -7,10 +7,10 @@
     <artifactId>messenger</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>messenger</name>
+    <name>com.aobin.messenger</name>
 
     <build>
-        <finalName>messenger</finalName>
+        <finalName>com.aobin.messenger</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
