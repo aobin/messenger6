@@ -1,9 +1,11 @@
 package com.aobin.messenger.database;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.aobin.messenger.models.BaseModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DataBase<T extends BaseModel>
 {
@@ -17,7 +19,7 @@ public class DataBase<T extends BaseModel>
   
   public T addEntity(T entity)
   {
-    this.mapDataBase.put(entity.getId(), entity);
+    this.mapDataBase.put(new Long(this.mapDataBase.size()+1), entity);
     return entity;
   }
   
@@ -30,5 +32,17 @@ public class DataBase<T extends BaseModel>
   {
     return this.mapDataBase.get(id);
   }
-  
+
+  public List<T> getEntities()
+  {
+    List<Long> keys = new ArrayList<>(this.mapDataBase.keySet());
+
+    List<T> entityList = new ArrayList<T>();
+    for(Long key: keys)
+    {
+        entityList.add(this.mapDataBase.get(key));
+    }
+     return entityList;
+  }
+
 }

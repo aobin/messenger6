@@ -4,6 +4,8 @@ package com.aobin.messenger.services;
 import com.aobin.messenger.database.DataBase;
 import com.aobin.messenger.models.Student;
 
+import java.util.List;
+
 public class StudentService
 {
   private DataBase<Student> studentDatabase=new DataBase<>();
@@ -23,6 +25,11 @@ public class StudentService
     Student student = studentDatabase.getEntity(id);
     
     return student;
+  }
+
+  public List<Student> getStudents()
+  {
+    return this.studentDatabase.getEntities();
   }
 
 }
