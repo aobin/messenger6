@@ -39,7 +39,7 @@ public class MyResource
 
     @GET
     @Path("/student/{id}")
-    public Student getStudent(@PathParam("id") long id)
+    public EPCUser getStudent(@PathParam("id") long id)
     {
         EPCUser epcUser = epcUserDao.getUserByEmail("aobin");
         System.out.println(epcUser.getEmail()+" 123123123");
@@ -48,7 +48,7 @@ public class MyResource
         messegeProducer.sendMessage(queueDestination, "你好，生产者！这是消息：");
         System.out.println("JMS test end===");
 
-        return studentService.getStudent(id);
+        return epcUser;
     }
 
     @GET

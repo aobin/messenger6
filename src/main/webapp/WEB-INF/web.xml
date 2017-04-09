@@ -37,7 +37,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:/spring/SpringMVC-servlet.xml</param-value>
+            <param-value>classpath:/spring/spring-mvc.xml</param-value>
             <!-- 默认是/WEB-INF/[servlet名字]-servlet.xml -->
         </init-param>
         <load-on-startup>2</load-on-startup>
