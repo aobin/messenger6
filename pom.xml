@@ -10,7 +10,7 @@
     <name>com.aobin.messenger</name>
 
     <build>
-        <finalName>com.aobin.messenger</finalName>
+        <finalName>messenger6</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
