@@ -55,8 +55,8 @@ public class MyResource
     @Path("/students")
     public List<Student> getStudents(@HeaderParam("name") String name, @CookieParam("locale") String locale)
     {
-        System.out.println("name:" + name);
-
+        System.out.println("name111:" + name);
+        System.out.println("哈哈:" + name);
         System.out.println("locale:" + locale);
         return studentService.getStudents();
     }
