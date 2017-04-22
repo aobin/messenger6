@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <name>com.aobin.messenger</name>
 
-    <!-- haha haha-->
+    <!-- haha haha hello -->
     <build>
         <finalName>messenger6</finalName>
         <plugins>
@@ -301,14 +301,14 @@
             <version>${aspectj.version}</version>
         </dependency>
 
-        <!--解决spring加载的时候，报的xml的异常-->
+        <!--解决spring加载的时候，报的xml的异�?->
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
         </dependency>
 
-        <!--解决spring和jersey整合的问题-->
+        <!--解决spring和jersey整合的问�?->
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring3</artifactId>
