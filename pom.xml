@@ -8,7 +8,7 @@
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>com.aobin.messenger</name>
-
+   <!-- hello -->
     <build>
         <finalName>messenger6</finalName>
         <plugins>
