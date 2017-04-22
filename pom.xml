@@ -301,14 +301,14 @@
             <version>${aspectj.version}</version>
         </dependency>
 
-        <!--解决spring加载的时候，报的xml的异�?->
+        <!--解决spring加载的时候，报的xml的异�?->
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
         </dependency>
 
-        <!--解决spring和jersey整合的问�?->
+        <!- 解决spring和jersey整合的问-->
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring3</artifactId>
