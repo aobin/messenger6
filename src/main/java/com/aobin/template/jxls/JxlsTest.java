@@ -1,4 +1,4 @@
-package com.aobin.template;
+package com.aobin.template.jxls;
 
 import com.aobin.messenger.models.Student;
 import com.aobin.messenger.services.StudentService;
@@ -37,6 +37,8 @@ public class JxlsTest
             OutputStream os = new FileOutputStream("D:\\xls_template_output.xlsx");
             Context context = new Context();
             context.putVar("students", students);
+            context.putVar("message","hello!!");
+
             JxlsHelper.getInstance().processTemplate(inputStream,os,context);
         }
         catch (Exception e)
