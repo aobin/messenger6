@@ -5,6 +5,8 @@ import com.aobin.messenger.database.entities.EPCUser;
 import com.aobin.messenger.jms.MessegeProducer;
 import com.aobin.messenger.models.Student;
 import com.aobin.messenger.services.StudentService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,19 +25,17 @@ import java.util.List;
 public class MyResource
 {
 
-    StudentService studentService = new StudentService();
+    @Autowired
+    StudentService studentService;
+    @Autowired
     private EPCUserDao epcUserDao;
+    @Autowired
     private MessegeProducer messegeProducer;
 
     @Autowired
     private Destination queueDestination;
 
-    @Autowired
-    public MyResource(EPCUserDao epcUserDao,MessegeProducer messegeProducer)
-    {
-        this.epcUserDao = epcUserDao;
-        this.messegeProducer = messegeProducer;
-    }
+    Logger logger = LogManager.getLogger(MyResource.class);
 
     @GET
     @Path("/student/{id}")
@@ -56,9 +56,11 @@ public class MyResource
     public List<Student> getStudents(@HeaderParam("name") String name, @CookieParam("locale") String locale)
     {
         System.out.println("name111:" + name);
-        System.out.println("哈哈:" + name);
+        System.out.println("哈哈111:" + name);
         System.out.println("locale:" + locale);
+        logger.info("hell {}", name);
         return studentService.getStudents();
     }
+
 
 }

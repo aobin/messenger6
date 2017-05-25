@@ -220,7 +220,7 @@
         </dependency>
 
         <!-- Logging -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
@@ -239,7 +239,7 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.0.12</version>
-        </dependency>
+        </dependency>-->
 
         <!-- Hibernate -->
         <dependency>
@@ -415,12 +415,30 @@
         </dependency>
         <!--jxls end-->
 
-        <!--加载resources下面的文件-->
+        <!--加载resources下面的文件 table容器-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>21.0</version>
         </dependency>
+
+        <!--log4j2 begin-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <!--log4j2 -->
 
     </dependencies>
 
@@ -439,6 +457,6 @@
         <aspectj.version>1.7.2</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <ignite.version>1.7.0</ignite.version>
-
+        <log4j2.version>2.5</log4j2.version>
     </properties>
 </project>

@@ -3,15 +3,18 @@ package com.aobin.messenger.services;
 
 import com.aobin.messenger.database.DataBase;
 import com.aobin.messenger.models.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class StudentService
 {
-  private DataBase<Student> studentDatabase=new DataBase<>();
-  
+  private DataBase<Student> studentDatabase;
+
   public StudentService()
   {
+    studentDatabase=new DataBase<>();
     Student student1=new Student(1, "aobin1", 11);
     Student student2=new Student(2, "aobin2", 22);
     Student student3=new Student(3, "aobin3", 33);
