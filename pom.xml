@@ -440,8 +440,14 @@
         </dependency>
         <!--log4j2 -->
 
-    </dependencies>
+        <!--flyway数据库版本管理工具-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>4.2.0</version>
+        </dependency>
 
+    </dependencies>
 
 
     <properties>

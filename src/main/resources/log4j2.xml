@@ -9,6 +9,7 @@
     <Filter type="ThresholdFilter" level="trace"/>
 
     <Appenders>
+        <!--标准输出-->
         <Appender name="STDOUT" type="Console" >
             <Layout type="PatternLayout" pattern="${pattern}"/>
             <Filters>
@@ -17,9 +18,11 @@
             </Filters>
         </Appender>
 
+        <!--测试的日志记录,会被替换-->
         <File name="testlog" fileName="D:\logs\messenger6_test.log" append="false">
             <PatternLayout pattern="${pattern}"/>
         </File>
+
 
         <!-- 配置日志输出文件名字     追加读写 -->
         <RollingFile name="RollingFile" fileName="D:\logs\messenger6.log" filePattern="D:\logs\messenger6.%d{yyyy-MM-dd}.log" append="true">
@@ -44,8 +47,10 @@
         <Root level="trace">
             <AppenderRef ref="testlog"/>
             <AppenderRef ref="RollingFile"/>
-            <!--<AppenderRef ref="File"/>-->
             <AppenderRef ref="STDOUT"/>
+<!--
+            <AppenderRef ref="Logstash"/>
+-->
         </Root>
     </Loggers>
 

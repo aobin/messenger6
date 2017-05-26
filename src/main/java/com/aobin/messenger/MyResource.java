@@ -58,9 +58,20 @@ public class MyResource
         System.out.println("name111:" + name);
         System.out.println("哈哈111:" + name);
         System.out.println("locale:" + locale);
-        logger.info("hell {}", name);
+        logger.info("hello {}", name);
+        logger.info("for test");
         return studentService.getStudents();
     }
 
+    /*public static void main(String[] args)
+    {
+        GenericXmlApplicationContext context = new GenericXmlApplicationContext();
+        context.setValidating(false);
+        context.load("classpath*:spring-context.xml");
+
+        context.refresh();
+        StudentService userService = context.getBean(StudentService.class);
+        System.out.println(userService);
+    }*/
 
 }

@@ -10,10 +10,16 @@
            使用component来替代annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入\ -->
     <!-- <context:component-scan base-package="com.aobin.messenger.database"/>-->
 
+    <!-- Flyway configuration -->
+    <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+        <property name="baselineOnMigrate" value="true" />
+        <property name="locations" value="classpath:/migration/" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
     <!-- 定义实体管理器工厂
          Jpa配置   LocalContainerEntityManagerFactoryBean这个选项Spring扮演了容器的角色。完全掌管JPA -->
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="flyway">
         <!-- 指定数据源 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 指定Jpa持久化实现厂商类,这里以Hibernate为例 -->
