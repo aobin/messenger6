@@ -5,6 +5,7 @@ import com.aobin.messenger.database.DataBase;
 import com.aobin.messenger.models.Student;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,9 +16,9 @@ public class StudentService
   public StudentService()
   {
     studentDatabase=new DataBase<>();
-    Student student1=new Student(1, "aobin1", 11);
-    Student student2=new Student(2, "aobin2", 22);
-    Student student3=new Student(3, "aobin3", 33);
+    Student student1=new Student("aobin1", 1, new Date());
+    Student student2=new Student("aobin2", 2, new Date());
+    Student student3=new Student("aobin3", 3, new Date());
     studentDatabase.addEntity(student1);
     studentDatabase.addEntity(student2);
     studentDatabase.addEntity(student3);   
