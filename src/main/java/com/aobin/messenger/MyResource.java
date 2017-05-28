@@ -4,6 +4,7 @@ import com.aobin.messenger.database.dao.EPCUserDao;
 import com.aobin.messenger.database.entities.EPCUser;
 import com.aobin.messenger.jms.MessegeProducer;
 import com.aobin.messenger.models.Student;
+import com.aobin.messenger.services.AsyncService;
 import com.aobin.messenger.services.StudentService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +15,8 @@ import javax.jms.Destination;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -27,6 +30,8 @@ public class MyResource
 
     @Autowired
     StudentService studentService;
+    @Autowired
+    AsyncService asyncService;
     @Autowired
     private EPCUserDao epcUserDao;
     @Autowired
@@ -42,7 +47,7 @@ public class MyResource
     public EPCUser getStudent(@PathParam("id") long id)
     {
         EPCUser epcUser = epcUserDao.getUserByEmail("aobin");
-        System.out.println(epcUser.getEmail()+" 123123123");
+        System.out.println(epcUser.getEmail() + " 123123123");
 
         System.out.println("JMS test begin===");
         messegeProducer.sendMessage(queueDestination, "你好，生产者！这是消息：");
@@ -63,15 +68,50 @@ public class MyResource
         return studentService.getStudents();
     }
 
-    /*public static void main(String[] args)
+    @GET
+    @Path("/asyncService/getStringResponseInFuture")
+    public String getStringResponseInFuture()
     {
-        GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.setValidating(false);
-        context.load("classpath*:spring-context.xml");
+        System.out.println("start to execute controller, send out async request");
+        Future<String> future1 = asyncService.getStringResponseInFuture();
+        Future<String> future2 = asyncService.getStringResponseInFuture();
+        Future<String> future3 = asyncService.getStringResponseInFuture();
 
-        context.refresh();
-        StudentService userService = context.getBean(StudentService.class);
-        System.out.println(userService);
-    }*/
+        System.out.println("async requests have been sent out, wait for result");
+        String result1="";
+        String result2="";
+        String result3="";
+
+        while (true)
+        {
+            if (future1.isDone() && future2.isDone() && future3.isDone())
+            {
+                System.out.println("two requests have been finished!");
+                try
+                {
+                    result1 = future1.get();
+                    System.out.println(result1);
+                    result2 = future2.get();
+                    System.out.println(result2);
+                    result3 = future3.get();
+                    System.out.println(result3);
+                    break;
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+                catch (ExecutionException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+
+        return "123123";
+
+    }
 
 }

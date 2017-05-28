@@ -11,7 +11,12 @@
     <!-- <context:component-scan base-package="com.aobin.messenger.database"/>-->
 
     <!-- Flyway configuration -->
-    <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+    <!--<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+        <property name="baselineOnMigrate" value="true" />
+        <property name="locations" value="classpath:/migration/" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>-->
+    <bean id="flyway" class="com.aobin.database.migration.MyFlyway" init-method="myMigrate">
         <property name="baselineOnMigrate" value="true" />
         <property name="locations" value="classpath:/migration/" />
         <property name="dataSource" ref="dataSource" />

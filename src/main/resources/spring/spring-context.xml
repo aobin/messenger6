@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task-4.2.xsd">
 
-    <import resource="classpath*:/spring/spring-data.xml" />
-    <import resource="classpath*:/spring/spring-jms.xml" />
-    <import resource="classpath*:/spring/spring-redis.xml" />
+    <import resource="classpath*:/spring/spring-data.xml"/>
+    <import resource="classpath*:/spring/spring-jms.xml"/>
+    <import resource="classpath*:/spring/spring-redis.xml"/>
 
-    <context:annotation-config />
-<!--    <mvc:annotation-driven />-->
+    <context:annotation-config/>
+    <!--    <mvc:annotation-driven />-->
     <context:component-scan base-package="com.aobin"/>
 
     <!-- spring启动时扫描项目路径下的properties文件,后续用${key }方式取出对应值,这样可以代码解耦和，后续只需修改properties文件即可 -->
@@ -23,6 +29,12 @@
         </property>
     </bean>
 
-
+    <!--spring线程池-->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" destroy-method="shutdown">
+        <property name="corePoolSize" value="2"/>
+        <property name="maxPoolSize" value="2"/>
+        <property name="queueCapacity" value="10"/>
+    </bean>
+    <task:annotation-driven executor="taskExecutor"/>
 
 </beans>
